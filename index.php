@@ -1,4 +1,6 @@
-<?php require_once('header.php'); ?>
+<?php 
+include "config.php";
+require_once('header.php'); ?>
 
 <?php
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
@@ -37,9 +39,10 @@ foreach ($result as $row)
     <ol class="carousel-indicators">
         <?php
         $i=0;
-        $statement = $pdo->prepare("SELECT * FROM tbl_slider");
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+            $statement = $pdo->prepare("SELECT * FROM tbl_slider");
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC); 
+              
         foreach ($result as $row) {            
             ?>
             <li data-target="#bootstrap-touch-slider" data-slide-to="<?php echo $i; ?>" <?php if($i==0) {echo 'class="active"';} ?>></li>
@@ -54,9 +57,16 @@ foreach ($result as $row)
 
         <?php
         $i=0;
-        $statement = $pdo->prepare("SELECT * FROM tbl_slider");
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+        if($_SESSION['lang'] == 'en') {
+            $statement = $pdo->prepare("SELECT * FROM tbl_slider");
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);  
+        } else if($_SESSION['lang'] == 'ar'){
+            $statement = $pdo->prepare("SELECT * FROM tbl_slider_arabic");
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC); 
+        }
+                          
         foreach ($result as $row) {            
             ?>
             <div class="item <?php if($i==0) {echo 'active';} ?>" style="background-image:url(assets/uploads/<?php echo $row['photo']; ?>);">
@@ -66,7 +76,7 @@ foreach ($result as $row)
                         <div class="slide-text <?php if($row['position'] == 'Left') {echo 'slide_style_left';} elseif($row['position'] == 'Center') {echo 'slide_style_center';} elseif($row['position'] == 'Right') {echo 'slide_style_right';} ?>">
                             <h1 data-animation="animated <?php if($row['position'] == 'Left') {echo 'zoomInLeft';} elseif($row['position'] == 'Center') {echo 'flipInX';} elseif($row['position'] == 'Right') {echo 'zoomInRight';} ?>"><?php echo $row['heading']; ?></h1>
                             <p data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo nl2br($row['content']); ?></p>
-                            <a href="<?php echo $row['button_url']; ?>" target="_blank" style="background:rgb(98, 0, 255);"  class="btn btn-primary" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo $row['button_text']; ?></a>
+                            <a href="<?php echo $row['button_url']; ?>" target="_blank" style="background:rgb(98, 0, 255);"  class="btn btn-primary" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Know More';}else if($_SESSION['lang'] == 'ar') {echo 'أطلع أكثر';}?></a>
                         </div>
                     </div>
                 </div>
@@ -125,8 +135,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo $featured_product_title; ?></h2>
-                    <h3><?php echo $featured_product_subtitle; ?></h3>
+                    <h2><?php  if($_SESSION['lang'] == 'en') {echo 'FEATURED PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo ' منتجات مميزة';} ?></h2>
+                    <h3><?php  if($_SESSION['lang'] == 'en') {echo 'Our list on Top Featured Products';} else if($_SESSION['lang'] == 'ar') {echo 'أكثر المنتجات تميزا في مركزنا';} ?></h3>
                 </div>
             </div>
         </div>
@@ -233,7 +243,7 @@ foreach ($result as $row)
                                         </div>
                                     </div>
                                 <?php else: ?>
-                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> Show Details</a></p>
+                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -254,8 +264,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo $latest_product_title; ?></h2>
-                    <h3><?php echo $latest_product_subtitle; ?></h3>
+                    <h2><?php  if($_SESSION['lang'] == 'en') {echo 'LATEST PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo 'أخر ما وصل الينا';} ?></h2>
+                    <h3><?php  if($_SESSION['lang'] == 'en') {echo 'Our list of recently added products';} else if($_SESSION['lang'] == 'ar') {echo 'اخر ما تم اضافته الى الموقع';} ?></h3>
                 </div>
             </div>
         </div>
@@ -361,7 +371,7 @@ foreach ($result as $row)
                                         </div>
                                     </div>
                                 <?php else: ?>
-                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> Show Details</a></p>
+                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -385,8 +395,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php echo $popular_product_title; ?></h2>
-                    <h3><?php echo $popular_product_subtitle; ?></h3>
+                    <h2><?php  if($_SESSION['lang'] == 'en') {echo 'POPULAR PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo ' منتجات شهيرة';} ?></h2>
+                    <h3><?php  if($_SESSION['lang'] == 'en') {echo 'Popular products based on customers choice';} else if($_SESSION['lang'] == 'ar') {echo '  منتجات شهيرة اعتماد على اختيار الزبائن';} ?></h3>
                 </div>
             </div>
         </div>
@@ -492,7 +502,7 @@ foreach ($result as $row)
                                         </div>
                                     </div>
                                 <?php else: ?>
-                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> Show Details</a></p>
+                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
                                 <?php endif; ?>
                             </div>
                         </div>

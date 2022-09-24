@@ -1,5 +1,8 @@
-<!-- This is main configuration File -->
+<!-- This is main configuration File --
+
+
 <?php
+include "config.php";
 ob_start();
 session_start();
 include("admin/inc/config.php");
@@ -10,6 +13,9 @@ $error_message = '';
 $success_message = '';
 $error_message1 = '';
 $success_message1 = '';
+
+
+
 
 // Getting all language variables into array as global variable
 $i = 1;
@@ -80,155 +86,155 @@ foreach ($result as $row) {
 <head>
 
 	<!-- Meta Tags -->
-	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="assets/uploads/<?php echo $favicon; ?>">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/uploads/<?php echo $favicon; ?>">
 
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-	<link rel="stylesheet" href="assets/css/jquery.bxslider.min.css">
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<link rel="stylesheet" href="assets/css/rating.css">
-	<link rel="stylesheet" href="assets/css/spacing.css">
-	<link rel="stylesheet" href="assets/css/bootstrap-touch-slider.css">
-	<link rel="stylesheet" href="assets/css/animate.min.css">
-	<link rel="stylesheet" href="assets/css/tree-menu.css">
-	<link rel="stylesheet" href="assets/css/select2.min.css">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<link rel="stylesheet" href="assets/css/responsive.css">
+<!-- Stylesheets -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="assets/css/jquery.bxslider.min.css">
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/rating.css">
+<link rel="stylesheet" href="assets/css/spacing.css">
+<link rel="stylesheet" href="assets/css/bootstrap-touch-slider.css">
+<link rel="stylesheet" href="assets/css/animate.min.css">
+<link rel="stylesheet" href="assets/css/tree-menu.css">
+<link rel="stylesheet" href="assets/css/select2.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
 
-	<?php
+<?php
 
-	$statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
-	$statement->execute();
+$statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($result as $row) {
+	$about_meta_title = $row['about_meta_title'];
+	$about_meta_keyword = $row['about_meta_keyword'];
+	$about_meta_description = $row['about_meta_description'];
+	$faq_meta_title = $row['faq_meta_title'];
+	$faq_meta_keyword = $row['faq_meta_keyword'];
+	$faq_meta_description = $row['faq_meta_description'];
+	$blog_meta_title = $row['blog_meta_title'];
+	$blog_meta_keyword = $row['blog_meta_keyword'];
+	$blog_meta_description = $row['blog_meta_description'];
+	$contact_meta_title = $row['contact_meta_title'];
+	$contact_meta_keyword = $row['contact_meta_keyword'];
+	$contact_meta_description = $row['contact_meta_description'];
+	$pgallery_meta_title = $row['pgallery_meta_title'];
+	$pgallery_meta_keyword = $row['pgallery_meta_keyword'];
+	$pgallery_meta_description = $row['pgallery_meta_description'];
+	$vgallery_meta_title = $row['vgallery_meta_title'];
+	$vgallery_meta_keyword = $row['vgallery_meta_keyword'];
+	$vgallery_meta_description = $row['vgallery_meta_description'];
+}
+
+$cur_page = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+
+if ($cur_page == 'index.php' || $cur_page == 'login.php' || $cur_page == 'registration.php' || $cur_page == 'cart.php' || $cur_page == 'checkout.php' || $cur_page == 'forget-password.php' || $cur_page == 'reset-password.php' || $cur_page == 'product-category.php' || $cur_page == 'product.php') {
+?>
+	<title><?php echo $meta_title_home; ?></title>
+	<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
+	<meta name="description" content="<?php echo $meta_description_home; ?>">
+<?php
+}
+
+if ($cur_page == 'about.php') {
+?>
+	<title><?php echo $about_meta_title; ?></title>
+	<meta name="keywords" content="<?php echo $about_meta_keyword; ?>">
+	<meta name="description" content="<?php echo $about_meta_description; ?>">
+<?php
+}
+if ($cur_page == 'faq.php') {
+?>
+	<title><?php echo $faq_meta_title; ?></title>
+	<meta name="keywords" content="<?php echo $faq_meta_keyword; ?>">
+	<meta name="description" content="<?php echo $faq_meta_description; ?>">
+<?php
+}
+if ($cur_page == 'contact.php') {
+?>
+	<title><?php echo $contact_meta_title; ?></title>
+	<meta name="keywords" content="<?php echo $contact_meta_keyword; ?>">
+	<meta name="description" content="<?php echo $contact_meta_description; ?>">
+<?php
+}
+if ($cur_page == 'product.php') {
+	$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
+	$statement->execute(array($_REQUEST['id']));
 	$result = $statement->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($result as $row) {
-		$about_meta_title = $row['about_meta_title'];
-		$about_meta_keyword = $row['about_meta_keyword'];
-		$about_meta_description = $row['about_meta_description'];
-		$faq_meta_title = $row['faq_meta_title'];
-		$faq_meta_keyword = $row['faq_meta_keyword'];
-		$faq_meta_description = $row['faq_meta_description'];
-		$blog_meta_title = $row['blog_meta_title'];
-		$blog_meta_keyword = $row['blog_meta_keyword'];
-		$blog_meta_description = $row['blog_meta_description'];
-		$contact_meta_title = $row['contact_meta_title'];
-		$contact_meta_keyword = $row['contact_meta_keyword'];
-		$contact_meta_description = $row['contact_meta_description'];
-		$pgallery_meta_title = $row['pgallery_meta_title'];
-		$pgallery_meta_keyword = $row['pgallery_meta_keyword'];
-		$pgallery_meta_description = $row['pgallery_meta_description'];
-		$vgallery_meta_title = $row['vgallery_meta_title'];
-		$vgallery_meta_keyword = $row['vgallery_meta_keyword'];
-		$vgallery_meta_description = $row['vgallery_meta_description'];
+		$og_photo = $row['p_featured_photo'];
+		$og_title = $row['p_name'];
+		$og_slug = 'product.php?id=' . $_REQUEST['id'];
+		$og_description = substr(strip_tags($row['p_description']), 0, 200) . '...';
 	}
+}
 
-	$cur_page = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], "/") + 1);
+if ($cur_page == 'dashboard.php') {
+?>
+	<title>Dashboard - <?php echo $meta_title_home; ?></title>
+	<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
+	<meta name="description" content="<?php echo $meta_description_home; ?>">
+<?php
+}
+if ($cur_page == 'customer-profile-update.php') {
+?>
+	<title>Update Profile - <?php echo $meta_title_home; ?></title>
+	<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
+	<meta name="description" content="<?php echo $meta_description_home; ?>">
+<?php
+}
+if ($cur_page == 'customer-billing-shipping-update.php') {
+?>
+	<title>Update Billing and Shipping Info - <?php echo $meta_title_home; ?></title>
+	<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
+	<meta name="description" content="<?php echo $meta_description_home; ?>">
+<?php
+}
+if ($cur_page == 'customer-password-update.php') {
+?>
+	<title>Update Password - <?php echo $meta_title_home; ?></title>
+	<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
+	<meta name="description" content="<?php echo $meta_description_home; ?>">
+<?php
+}
+if ($cur_page == 'customer-order.php') {
+?>
+	<title>Orders - <?php echo $meta_title_home; ?></title>
+	<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
+	<meta name="description" content="<?php echo $meta_description_home; ?>">
+<?php
+}
+?>
 
-	if ($cur_page == 'index.php' || $cur_page == 'login.php' || $cur_page == 'registration.php' || $cur_page == 'cart.php' || $cur_page == 'checkout.php' || $cur_page == 'forget-password.php' || $cur_page == 'reset-password.php' || $cur_page == 'product-category.php' || $cur_page == 'product.php') {
-	?>
-		<title><?php echo $meta_title_home; ?></title>
-		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
-		<meta name="description" content="<?php echo $meta_description_home; ?>">
-	<?php
-	}
+<?php if ($cur_page == 'blog-single.php') : ?>
+	<meta property="og:title" content="<?php echo $og_title; ?>">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="<?php echo BASE_URL . $og_slug; ?>">
+	<meta property="og:description" content="<?php echo $og_description; ?>">
+	<meta property="og:image" content="assets/uploads/<?php echo $og_photo; ?>">
+<?php endif; ?>
 
-	if ($cur_page == 'about.php') {
-	?>
-		<title><?php echo $about_meta_title; ?></title>
-		<meta name="keywords" content="<?php echo $about_meta_keyword; ?>">
-		<meta name="description" content="<?php echo $about_meta_description; ?>">
-	<?php
-	}
-	if ($cur_page == 'faq.php') {
-	?>
-		<title><?php echo $faq_meta_title; ?></title>
-		<meta name="keywords" content="<?php echo $faq_meta_keyword; ?>">
-		<meta name="description" content="<?php echo $faq_meta_description; ?>">
-	<?php
-	}
-	if ($cur_page == 'contact.php') {
-	?>
-		<title><?php echo $contact_meta_title; ?></title>
-		<meta name="keywords" content="<?php echo $contact_meta_keyword; ?>">
-		<meta name="description" content="<?php echo $contact_meta_description; ?>">
-	<?php
-	}
-	if ($cur_page == 'product.php') {
-		$statement = $pdo->prepare("SELECT * FROM tbl_product WHERE p_id=?");
-		$statement->execute(array($_REQUEST['id']));
-		$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-		foreach ($result as $row) {
-			$og_photo = $row['p_featured_photo'];
-			$og_title = $row['p_name'];
-			$og_slug = 'product.php?id=' . $_REQUEST['id'];
-			$og_description = substr(strip_tags($row['p_description']), 0, 200) . '...';
-		}
-	}
+<?php if ($cur_page == 'product.php') : ?>
+	<meta property="og:title" content="<?php echo $og_title; ?>">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="<?php echo BASE_URL . $og_slug; ?>">
+	<meta property="og:description" content="<?php echo $og_description; ?>">
+	<meta property="og:image" content="assets/uploads/<?php echo $og_photo; ?>">
+<?php endif; ?>
 
-	if ($cur_page == 'dashboard.php') {
-	?>
-		<title>Dashboard - <?php echo $meta_title_home; ?></title>
-		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
-		<meta name="description" content="<?php echo $meta_description_home; ?>">
-	<?php
-	}
-	if ($cur_page == 'customer-profile-update.php') {
-	?>
-		<title>Update Profile - <?php echo $meta_title_home; ?></title>
-		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
-		<meta name="description" content="<?php echo $meta_description_home; ?>">
-	<?php
-	}
-	if ($cur_page == 'customer-billing-shipping-update.php') {
-	?>
-		<title>Update Billing and Shipping Info - <?php echo $meta_title_home; ?></title>
-		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
-		<meta name="description" content="<?php echo $meta_description_home; ?>">
-	<?php
-	}
-	if ($cur_page == 'customer-password-update.php') {
-	?>
-		<title>Update Password - <?php echo $meta_title_home; ?></title>
-		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
-		<meta name="description" content="<?php echo $meta_description_home; ?>">
-	<?php
-	}
-	if ($cur_page == 'customer-order.php') {
-	?>
-		<title>Orders - <?php echo $meta_title_home; ?></title>
-		<meta name="keywords" content="<?php echo $meta_keyword_home; ?>">
-		<meta name="description" content="<?php echo $meta_description_home; ?>">
-	<?php
-	}
-	?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
-	<?php if ($cur_page == 'blog-single.php') : ?>
-		<meta property="og:title" content="<?php echo $og_title; ?>">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="<?php echo BASE_URL . $og_slug; ?>">
-		<meta property="og:description" content="<?php echo $og_description; ?>">
-		<meta property="og:image" content="assets/uploads/<?php echo $og_photo; ?>">
-	<?php endif; ?>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
 
-	<?php if ($cur_page == 'product.php') : ?>
-		<meta property="og:title" content="<?php echo $og_title; ?>">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="<?php echo BASE_URL . $og_slug; ?>">
-		<meta property="og:description" content="<?php echo $og_description; ?>">
-		<meta property="og:image" content="assets/uploads/<?php echo $og_photo; ?>">
-	<?php endif; ?>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-
-	<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
-
-	<?php echo $before_head; ?>
+<?php echo $before_head; ?>
 
 
 </head>
@@ -345,11 +351,22 @@ foreach ($result as $row) {
 					<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
 						<?php $csrf->echoInputField(); ?>
 						<div class="form-group">
-							<input type="text" style="width:300px;" class="form-control search-top" placeholder="<?php echo LANG_VALUE_2; ?>" name="search_text">
+							<input type="text" style="width:300px;" class="form-control search-top" placeholder="<?php if($_SESSION['lang'] == 'en') {echo 'Search Product';} else if($_SESSION['lang'] == 'ar') {echo 'ابحث عن منتج';} ?>" name="search_text">
 						</div>
-						<button type="submit" style="background:rgb(98, 0, 255); border: none" class="btn btn-danger"><?php echo LANG_VALUE_3; ?></button>
+						<button type="submit" style="background:rgb(98, 0, 255); border: none" class="btn btn-danger"><?php if ($_SESSION['lang'] == 'en') {
+																															echo 'Search';
+																														} else if ($_SESSION['lang'] == 'ar') {
+																															echo  'بحث';
+																														} ?></button>
 					</form>
+
 				</div>
+				<form method='post' style="display: flex; justify-content:center; align-items: center; margin-top: 32px; right: 40px; position: absolute;">
+					<input style="margin-right: 5px; padding: 5px 10px; color:white; background:#1D2671; border:none; " type="submit" id="btnSubmit" name="btnSubmit" value="Arabic" />
+					<input style="margin-right: 5px; padding: 5px 10px; color:white; background:#1D2671; border:none;" type="submit" id="btnDelete" name="btnDelete" value="English" />
+					<?php echo $_SESSION['lang']?>
+
+				</form>
 			</div>
 		</div>
 	</div>
@@ -364,13 +381,37 @@ foreach ($result as $row) {
 					<div class="menu-container" style="background-color: rgba(255, 0, 0, 0)">
 						<div class="menu">
 							<ul>
-								<li><a id="home" href="index.php">Home</a></li>
+
+								<li><a id="home" href="index.php"><?php if ($_SESSION['lang'] == 'ar') {
+																		echo 'الصفحة الرئيسية';
+																	} else if ($_SESSION['lang'] == 'en') {
+																		echo 'Home';
+																	} ?></a></li>
+
 
 								<?php
-								$statement = $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
-								$options = ['New Laptop', 'Used Laptop', 'Gaming', 'Monitors', 'Phones', 'Apple', 'Accessories'];
-								$statement->execute();
-								$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+								if (isset($_POST["btnSubmit"])) {
+									echo 'Arabic';
+									$_SESSION['lang'] = 'ar';
+									header("Refresh:0; url=index.php");
+								} else if (isset($_POST["btnDelete"])) {
+									// "Delete" clicked
+									$_SESSION['lang'] = 'en';
+									echo 'English';
+									header("Refresh:0; url=index.php");
+								}
+
+								if ($_SESSION['lang'] == "ar") {
+									$statement =  $pdo->prepare("SELECT * FROM tbl_top_arabic WHERE show_on_menu=1");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+								} else if ($_SESSION['lang'] == "en" || $_SESSION['lang'] == "") {
+									$statement =  $pdo->prepare("SELECT * FROM tbl_top_category WHERE show_on_menu=1");
+									$statement->execute();
+									$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+								}
+
 								foreach ($result as $row) {
 								?>
 									<li><a href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category"><?php echo $row['tcat_name']; ?></a>
@@ -402,6 +443,7 @@ foreach ($result as $row) {
 									</li>
 								<?php
 								}
+
 								?>
 
 								<?php
