@@ -70,7 +70,7 @@ if(isset($_POST['form1'])) {
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_cart; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php echo LANG_VALUE_18; ?></h1>
+        <h1><?php if($_SESSION['lang'] == 'en') {echo 'Cart';} else if($_SESSION['lang'] == 'ar') {echo 'السلة';}?></h1>
     </div>
 </div>
 
@@ -89,13 +89,13 @@ if(isset($_POST['form1'])) {
                     <table class="table table-responsive table-hover table-bordered">
                         <tr>
                             <th><?php echo '#' ?></th>
-                            <th><?php echo LANG_VALUE_8; ?></th>
-                            <th><?php echo LANG_VALUE_47; ?></th>
-                            <th><?php echo LANG_VALUE_157; ?></th>
-                            <th><?php echo LANG_VALUE_158; ?></th>
-                            <th><?php echo LANG_VALUE_159; ?></th>
-                            <th><?php echo LANG_VALUE_55; ?></th>
-                            <th class="text-right"><?php echo LANG_VALUE_82; ?></th>
+                            <th><?php if($_SESSION['lang'] == 'en') {echo 'Photo';} else if($_SESSION['lang'] == 'ar') {echo 'صورة المنتج';}?></th>
+                            <th><?php if($_SESSION['lang'] == 'en') {echo 'Product Name';} else if($_SESSION['lang'] == 'ar') {echo ' اسم المنتج';} ?></th>
+                            <th><?php if($_SESSION['lang'] == 'en') {echo 'Size';} else if($_SESSION['lang'] == 'ar') {echo 'الحجم';}?></th>
+                            <th><?php if($_SESSION['lang'] == 'en') {echo 'Color';} else if($_SESSION['lang'] == 'ar') {echo 'اللون';} ?></th>
+                            <th><?php if($_SESSION['lang'] == 'en') {echo 'Price';} else if($_SESSION['lang'] == 'ar') {echo 'السعر';} ?></th>
+                            <th><?php if($_SESSION['lang'] == 'en') {echo 'Quantity';} else if($_SESSION['lang'] == 'ar') {echo 'الكمية';} ?></th>
+                            <th class="text-right"><?php if($_SESSION['lang'] == 'en') {echo 'Total';} else if($_SESSION['lang'] == 'ar') {echo 'المجموع';}?></th>
                             <th class="text-center" style="width: 100px;"><?php echo LANG_VALUE_83; ?></th>
                         </tr>
                         <?php
@@ -201,9 +201,8 @@ if(isset($_POST['form1'])) {
 
                 <div class="cart-buttons">
                     <ul>
-                        <li><input type="submit" value="<?php echo LANG_VALUE_20; ?>" class="btn btn-primary" name="form1"></li>
-                        <li><a href="index.php" class="btn btn-primary"><?php echo LANG_VALUE_85; ?></a></li>
-                        <li><a href="checkout.php" class="btn btn-primary"><?php echo LANG_VALUE_23; ?></a></li>
+                        <li><a href="index.php" class="btn btn-primary"><?php if($_SESSION['lang'] == 'en') {echo 'Continue Shopping';} else if($_SESSION['lang'] == 'ar') {echo 'متابعة التسوق';} ?></a></li>
+                        <li><a href="checkout.php" class="btn btn-primary"><?php if($_SESSION['lang'] == 'en') {echo 'Proceed to Checkout';} else if($_SESSION['lang'] == 'ar') {echo 'اكمال عملية الشراء';} ?></a></li>
                     </ul>
                 </div>
                 </form>

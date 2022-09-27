@@ -382,7 +382,7 @@ if ($cur_page == 'customer-order.php') {
 						<div class="menu">
 							<ul>
 
-								<li><a id="home" href="index.php"><?php if ($_SESSION['lang'] == 'ar') {
+								<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700; id="home" href="index.php"><?php if ($_SESSION['lang'] == 'ar') {
 																		echo 'الصفحة الرئيسية';
 																	} else if ($_SESSION['lang'] == 'en') {
 																		echo 'Home';
@@ -414,7 +414,7 @@ if ($cur_page == 'customer-order.php') {
 
 								foreach ($result as $row) {
 								?>
-									<li><a href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category"><?php echo $row['tcat_name']; ?></a>
+									<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"  href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category"><?php echo $row['tcat_name']; ?></a>
 										<ul>
 											<?php
 											$statement1 = $pdo->prepare("SELECT * FROM tbl_mid_category WHERE tcat_id=?");

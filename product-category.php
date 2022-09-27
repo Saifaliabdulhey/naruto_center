@@ -20,14 +20,23 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
         exit;
     } else {
 
+       if($_SESSION['lang'] == 'en' ) {
         $statement = $pdo->prepare("SELECT * FROM tbl_top_category");
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
         foreach ($result as $row) {
             $top[] = $row['tcat_id'];
             $top1[] = $row['tcat_name'];
+       }
+        }else if($_SESSION['lang'] == 'ar') {
+            $statement = $pdo->prepare("SELECT * FROM tbl_top_arabic");
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+            foreach ($result as $row) {
+                $top[] = $row['tcat_id'];
+                $top1[] = $row['tcat_name'];
         }
-
+    }
         $statement = $pdo->prepare("SELECT * FROM tbl_mid_category");
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
@@ -123,7 +132,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_product_category; ?>)">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_50; ?> <?php echo $title; ?></h1>
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php if($_SESSION['lang'] == 'en') {echo 'Category: ';}  else if($_SESSION['lang'] == 'ar') {echo 'الفئة :';} ?> <?php if($_SESSION['lang'] == 'en') {echo $title;}  else if($_SESSION['lang'] == 'ar') {echo $title;} ?></h1>
     </div>
 </div>
 
@@ -135,7 +144,7 @@ if( !isset($_REQUEST['id']) || !isset($_REQUEST['type']) ) {
             </div>
             <div class="col-md-9">
                 
-                <h3><?php echo LANG_VALUE_51; ?> "<?php echo $title; ?>"</h3>
+                <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php if($_SESSION['lang'] == 'en') {echo 'All Products Under :';}  else if($_SESSION['lang'] == 'ar') {echo 'كل المنتجات ضمن  : ';} ?> <?php echo $title; ?></h3>
                 <div class="product product-cat">
 
                     <div class="row">

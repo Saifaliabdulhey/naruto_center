@@ -1,4 +1,5 @@
 <?php
+
 $statement = $pdo->prepare("SELECT * FROM tbl_settings WHERE id=1");
 $statement->execute();
 $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -102,11 +103,11 @@ This link will be active only for 24 hours.
 			?>
 				<form action="" method="post">
 					<?php $csrf->echoInputField(); ?>
-					<h2><?php echo LANG_VALUE_93; ?></h2>
+					<h2><?php if($_SESSION['lang'] == 'en'){echo 'SUBSCRIBE TO NARUTO';}else if ($_SESSION['lang'] == 'ar') {echo 'اشترك في ناروتو';} ?></h2>
 					<div class="input-group">
-			        	<input type="email" class="form-control" placeholder="<?php echo LANG_VALUE_95; ?>" name="email_subscribe">
+			        	<input type="email" class="form-control" placeholder="<?php if($_SESSION['lang'] == 'en'){echo 'Enter your Email Address';}else if ($_SESSION['lang'] == 'ar') {echo 'اكتب الايميل هنا';} ?>" name="email_subscribe">
 			         	<span class="input-group-btn">
-			         	<button class="btn btn-theme" type="submit" name="form_subscribe"><?php echo LANG_VALUE_92; ?></button>
+			         	<button style="margin-left: 10px; padding: 10px 20px; background: rgb(77, 0, 210);" class="btn btn-theme" type="submit" name="form_subscribe"><?php if($_SESSION['lang'] == 'en'){echo 'Subscribe';}else if ($_SESSION['lang'] == 'ar') {echo 'اشترك';} ?></button>
 			         	</span>
 			        </div>
 				</div>

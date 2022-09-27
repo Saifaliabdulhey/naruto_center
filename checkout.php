@@ -19,7 +19,7 @@ if(!isset($_SESSION['cart_p_id'])) {
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_checkout; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php echo LANG_VALUE_22; ?></h1>
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php if($_SESSION['lang'] == 'en') {echo 'Checkout';}else if($_SESSION['lang'] == 'ar') {echo 'اكمال عملية الشراء';} ?></h1>
     </div>
 </div>
 
@@ -30,7 +30,7 @@ if(!isset($_SESSION['cart_p_id'])) {
                 
                 <?php if(!isset($_SESSION['customer'])): ?>
                     <p>
-                        <a href="login.php" class="btn btn-md btn-danger"><?php echo LANG_VALUE_160; ?></a>
+                        <a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" href="login.php" class="btn btn-md btn-danger"><?php if($_SESSION['lang'] == 'en'){echo 'Please Login as a customer to continue purchasing';} else if($_SESSION['lang'] == 'ar'){echo 'من فضلك قم بالتسجيل كزبون لدى ناروتو لاكمال عملية الشراء';}  ?></a>
                     </p>
                 <?php else: ?>
 

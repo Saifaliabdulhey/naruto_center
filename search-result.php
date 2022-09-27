@@ -242,7 +242,7 @@ foreach ($result as $row) {
                                                     </div>
                                                 </div>
                                             <?php else: ?>
-                                                <p><a href="product.php?id=<?php echo $row['p_id']; ?>">Add to Cart</a></p>
+                                                <p><a style="background: rgb(98,0,255);" href="product.php?id=<?php echo $row['p_id']; ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Show Details';}else if ($_SESSION['lang'] == 'ar') {echo 'عرض التفاصيل';}  ?> </a></p>
                                             <?php endif; ?>
                                         </div>
                                     </div>
