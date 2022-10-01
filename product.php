@@ -413,7 +413,7 @@ if($success_message1 != '') {
                             <div class="p-quantity">
                                 <div class="row">
                                     <?php if(isset($size)): ?>
-                                    <div class="col-md-12 mb_20">
+                                    <div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" class="col-md-12 mb_20">
                                         <?php if($_SESSION['lang'] == 'en'){echo 'Select Size';}else if ($_SESSION['lang'] == 'ar') {echo 'حجم المنتج';}  ?> <br>
                                         <select name="size_id" class="form-control select2" style="width:auto;">
                                             <?php
@@ -433,7 +433,7 @@ if($success_message1 != '') {
                                     <?php endif; ?>
 
                                     <?php if(isset($color)): ?>
-                                    <div class="col-md-12">
+                                    <div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" class="col-md-12">
                                     <?php if($_SESSION['lang'] == 'en'){echo 'Select Color';}else if ($_SESSION['lang'] == 'ar') {echo 'لون المنتج';}  ?><br>
                                         <select name="color_id" class="form-control select2" style="width:auto;">
                                             <?php
@@ -456,7 +456,7 @@ if($success_message1 != '') {
                                 
                             </div>
 							<div class="p-price">
-                                <span style="font-size:14px;"><?php if($_SESSION['lang'] == 'en'){echo 'Product Price';}else if ($_SESSION['lang'] == 'ar') {echo 'سعر المنتج';}  ?> </span><br>
+                                <span style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700; font-size: 14px;"><?php if($_SESSION['lang'] == 'en'){echo 'Product Price';}else if ($_SESSION['lang'] == 'ar') {echo 'سعر المنتج';}  ?> </span><br>
                                 <span>
                                     <?php if($p_old_price!=''): ?>
                                         <del><?php echo LANG_VALUE_1; ?><?php echo $p_old_price; ?></del>
@@ -467,12 +467,12 @@ if($success_message1 != '') {
                             <input type="hidden" name="p_current_price" value="<?php echo $p_current_price; ?>">
                             <input type="hidden" name="p_name" value="<?php echo $p_name; ?>">
                             <input type="hidden" name="p_featured_photo" value="<?php echo $p_featured_photo; ?>">
-							<div class="p-quantity">
+							<div style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" class="p-quantity">
                             <?php if($_SESSION['lang'] == 'en'){echo 'َQuantity';}else if ($_SESSION['lang'] == 'ar') {echo 'الكمية';}  ?>  <br>
 								<input type="number" class="input-text qty" step="1" min="1" max="" name="p_qty" value="1" title="Qty" size="4" pattern="[0-9]*" inputmode="numeric">
 							</div>
 							<div class="btn-cart btn-cart1">
-                                <input type="submit" style="background:rgb(98,0, 255); border-radius: 5px; padding: 10px 50px;" value="<?php if($_SESSION['lang'] == 'en'){echo 'Add to Cart';}else if ($_SESSION['lang'] == 'ar') {echo 'أضافة الى السلة';}  ?> " name="form_add_to_cart">
+                                <input type="submit" style="background:rgb(98,0, 255); border-radius: 5px; padding: 10px 50px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" value="<?php if($_SESSION['lang'] == 'en'){echo 'Add to Cart';}else if ($_SESSION['lang'] == 'ar') {echo 'أضافة الى السلة';}  ?> " name="form_add_to_cart">
 							</div>
                             </form>
 							<div class="share">
@@ -486,10 +486,10 @@ if($success_message1 != '') {
 						<div class="col-md-12">
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Product Description';}else if ($_SESSION['lang'] == 'ar') {echo 'وصف المنتج';}  ?> </a></li>
-								<li role="presentation"><a href="#feature" aria-controls="feature" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Features';}else if ($_SESSION['lang'] == 'ar') {echo 'مميزات المنتج';}  ?> </a></li>
-                                <li role="presentation"><a href="#condition" aria-controls="condition" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Conditions';}else if ($_SESSION['lang'] == 'ar') {echo 'الشروط';}  ?> </a></li>
-                                <li role="presentation"><a href="#return_policy" aria-controls="return_policy" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Return Policy';}else if ($_SESSION['lang'] == 'ar') {echo 'سياسة الارجاع';}  ?> </a></li>
+								<li style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Product Description';}else if ($_SESSION['lang'] == 'ar') {echo 'وصف المنتج';}  ?> </a></li>
+								<li style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" role="presentation"><a href="#feature" aria-controls="feature" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Features';}else if ($_SESSION['lang'] == 'ar') {echo 'مميزات المنتج';}  ?> </a></li>
+                                <li style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" role="presentation"><a href="#condition" aria-controls="condition" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Conditions';}else if ($_SESSION['lang'] == 'ar') {echo 'الشروط';}  ?> </a></li>
+                                <li style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" role="presentation"><a href="#return_policy" aria-controls="return_policy" role="tab" data-toggle="tab"><?php if($_SESSION['lang'] == 'en'){echo 'Return Policy';}else if ($_SESSION['lang'] == 'ar') {echo 'سياسة الارجاع';}  ?> </a></li>
                                <!-- <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab"><?php echo LANG_VALUE_63; ?></a></li> -->
 							</ul>
 
@@ -657,8 +657,8 @@ if($success_message1 != '') {
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php if($_SESSION['lang'] == 'en'){echo 'RELATED PRODUCTS';}else if ($_SESSION['lang'] == 'ar') {echo 'منتجات مشابهة';}  ?> </h2>
-                    <h3><?php if($_SESSION['lang'] == 'en'){echo 'See all the related products from below';}else if ($_SESSION['lang'] == 'ar') {echo 'بعض المنتجات التي تتعلق  بالمنتج في الاعلى';}    ?></h3>
+                    <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php if($_SESSION['lang'] == 'en'){echo 'RELATED PRODUCTS';}else if ($_SESSION['lang'] == 'ar') {echo 'منتجات مشابهة';}  ?> </h2>
+                    <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php if($_SESSION['lang'] == 'en'){echo 'See all the related products from below';}else if ($_SESSION['lang'] == 'ar') {echo 'بعض المنتجات التي تتعلق  بالمنتج في الاعلى';}    ?></h3>
                 </div>
             </div>
         </div>
@@ -757,7 +757,7 @@ if($success_message1 != '') {
                                     }
                                     ?>
                                 </div>
-                                <p><a style="background: rgb(98,0, 255);" href="product.php?id=<?php echo $row['p_id']; ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Show Details';}else if ($_SESSION['lang'] == 'ar') {echo 'عرض التفاصيل';}  ?> </a></p>
+                                <p><a style="background: rgb(98,0, 255); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" href="product.php?id=<?php echo $row['p_id']; ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Show Details';}else if ($_SESSION['lang'] == 'ar') {echo 'عرض التفاصيل';}  ?> </a></p>
                             </div>
                         </div>
                         <?php

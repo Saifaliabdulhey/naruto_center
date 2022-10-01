@@ -242,7 +242,7 @@ foreach ($result as $row) {
                                                     </div>
                                                 </div>
                                             <?php else: ?>
-                                                <p><a style="background: rgb(98,0,255);" href="product.php?id=<?php echo $row['p_id']; ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Show Details';}else if ($_SESSION['lang'] == 'ar') {echo 'عرض التفاصيل';}  ?> </a></p>
+                                                <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><a style="background: rgb(98,0,255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Show Details';}else if ($_SESSION['lang'] == 'ar') {echo 'عرض التفاصيل';}  ?> </a></p>
                                             <?php endif; ?>
                                         </div>
                                     </div>

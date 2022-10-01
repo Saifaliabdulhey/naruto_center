@@ -25,8 +25,12 @@ if(!isset($_SESSION['customer'])) {
             </div>
             <div class="col-md-12">
                 <div class="user-content">
-                    <h3 class="text-center">
-                        <?php echo LANG_VALUE_90; ?>
+                    <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"  class="text-center">
+                        <?php if($_SESSION['lang'] == 'en') {
+                            echo 'Settings';
+                        } else if ($_SESSION['lang'] == 'ar') {
+                            echo 'الاعدادات';
+                        } ?>
                     </h3>
                 </div>                
             </div>

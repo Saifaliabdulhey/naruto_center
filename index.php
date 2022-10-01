@@ -74,9 +74,9 @@ foreach ($result as $row)
                 <div class="container">
                     <div class="row">
                         <div class="slide-text <?php if($row['position'] == 'Left') {echo 'slide_style_left';} elseif($row['position'] == 'Center') {echo 'slide_style_center';} elseif($row['position'] == 'Right') {echo 'slide_style_right';} ?>">
-                            <h1 data-animation="animated <?php if($row['position'] == 'Left') {echo 'zoomInLeft';} elseif($row['position'] == 'Center') {echo 'flipInX';} elseif($row['position'] == 'Right') {echo 'zoomInRight';} ?>"><?php echo $row['heading']; ?></h1>
-                            <p data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo nl2br($row['content']); ?></p>
-                            <a href="<?php echo $row['button_url']; ?>" target="_blank" style="background:rgb(98, 0, 255);"  class="btn btn-primary" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Know More';}else if($_SESSION['lang'] == 'ar') {echo 'أطلع أكثر';}?></a>
+                            <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" data-animation="animated <?php if($row['position'] == 'Left') {echo 'zoomInLeft';} elseif($row['position'] == 'Center') {echo 'flipInX';} elseif($row['position'] == 'Right') {echo 'zoomInRight';} ?>"><?php echo $row['heading']; ?></h1>
+                            <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php echo nl2br($row['content']); ?></p>
+                            <a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700; background:rgba(255, 255, 255, 0.384); width:300px; border:1px solid; border-radius:30px;" href="<?php echo $row['button_url']; ?>" target="_blank"  class="btn btn-primary" data-animation="animated <?php if($row['position'] == 'Left') {echo 'fadeInLeft';} elseif($row['position'] == 'Center') {echo 'fadeInDown';} elseif($row['position'] == 'Right') {echo 'fadeInRight';} ?>"><?php if($_SESSION['lang'] == 'en'){echo 'Know More';}else if($_SESSION['lang'] == 'ar') {echo 'أطلع أكثر';}?></a>
                         </div>
                     </div>
                 </div>
@@ -135,8 +135,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php  if($_SESSION['lang'] == 'en') {echo 'FEATURED PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo ' منتجات مميزة';} ?></h2>
-                    <h3><?php  if($_SESSION['lang'] == 'en') {echo 'Our list on Top Featured Products';} else if($_SESSION['lang'] == 'ar') {echo 'أكثر المنتجات تميزا في مركزنا';} ?></h3>
+                    <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php  if($_SESSION['lang'] == 'en') {echo 'FEATURED PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo ' منتجات مميزة';} ?></h2>
+                    <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php  if($_SESSION['lang'] == 'en') {echo 'Our list on Top Featured Products';} else if($_SESSION['lang'] == 'ar') {echo 'أكثر المنتجات تميزا في مركزنا';} ?></h3>
                 </div>
             </div>
         </div>
@@ -243,7 +243,7 @@ foreach ($result as $row)
                                         </div>
                                     </div>
                                 <?php else: ?>
-                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
+                                    <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -264,8 +264,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php  if($_SESSION['lang'] == 'en') {echo 'LATEST PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo 'أخر ما وصل الينا';} ?></h2>
-                    <h3><?php  if($_SESSION['lang'] == 'en') {echo 'Our list of recently added products';} else if($_SESSION['lang'] == 'ar') {echo 'اخر ما تم اضافته الى الموقع';} ?></h3>
+                    <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php  if($_SESSION['lang'] == 'en') {echo 'LATEST PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo 'أخر ما وصل الينا';} ?></h2>
+                    <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php  if($_SESSION['lang'] == 'en') {echo 'Our list of recently added products';} else if($_SESSION['lang'] == 'ar') {echo 'اخر ما تم اضافته الى الموقع';} ?></h3>
                 </div>
             </div>
         </div>
@@ -371,7 +371,7 @@ foreach ($result as $row)
                                         </div>
                                     </div>
                                 <?php else: ?>
-                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
+                                    <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -395,8 +395,8 @@ foreach ($result as $row)
         <div class="row">
             <div class="col-md-12">
                 <div class="headline">
-                    <h2><?php  if($_SESSION['lang'] == 'en') {echo 'POPULAR PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo ' منتجات شهيرة';} ?></h2>
-                    <h3><?php  if($_SESSION['lang'] == 'en') {echo 'Popular products based on customers choice';} else if($_SESSION['lang'] == 'ar') {echo '  منتجات شهيرة اعتماد على اختيار الزبائن';} ?></h3>
+                    <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php  if($_SESSION['lang'] == 'en') {echo 'POPULAR PRODUCTS';} else if($_SESSION['lang'] == 'ar') {echo ' منتجات شهيرة';} ?></h2>
+                    <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php  if($_SESSION['lang'] == 'en') {echo 'Popular products based on customers choice';} else if($_SESSION['lang'] == 'ar') {echo '  منتجات شهيرة اعتماد على اختيار الزبائن';} ?></h3>
                 </div>
             </div>
         </div>
@@ -502,7 +502,7 @@ foreach ($result as $row)
                                         </div>
                                     </div>
                                 <?php else: ?>
-                                    <p><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
+                                    <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><a style="background:rgb(98, 0, 255); border-radius: 5px; padding: 8px 20px" href="product.php?id=<?php echo $row['p_id']; ?>"><i class="fa fa-shopping-cart"></i> <?php if($_SESSION['lang'] == 'en') {echo 'Show Details';} else if($_SESSION['lang'] == 'ar') {echo 'عرض التفاصل';} ?></a></p>
                                 <?php endif; ?>
                             </div>
                         </div>

@@ -70,7 +70,7 @@ if(isset($_POST['form1'])) {
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $banner_cart; ?>)">
     <div class="overlay"></div>
     <div class="page-banner-inner">
-        <h1><?php if($_SESSION['lang'] == 'en') {echo 'Cart';} else if($_SESSION['lang'] == 'ar') {echo 'السلة';}?></h1>
+        <h1 style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><?php if($_SESSION['lang'] == 'en') {echo 'Cart';} else if($_SESSION['lang'] == 'ar') {echo 'السلة';}?></h1>
     </div>
 </div>
 
@@ -80,8 +80,12 @@ if(isset($_POST['form1'])) {
 			<div class="col-md-12">
 
                 <?php if(!isset($_SESSION['cart_p_id'])): ?>
-                    <?php echo '<h2 class="text-center">Cart is Empty!!</h2></br>'; ?>
-                    <?php echo '<h4 class="text-center">Add products to the cart in order to view it here.</h4>'; ?>
+                    <?php  if($_SESSION['lang'] == 'en') {echo '<h2 class="text-center">Cart is Empty!!</h2></br>';} else if($_SESSION['lang'] == 'ar') {
+                      echo  '<h2 style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" class="text-center">السلة فارغة</h2></br>';
+                    }; ?>
+                    <?php if($_SESSION['lang'] == 'en') { echo '<h4 class="text-center" style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;">Add products to the cart in order to view it here.</h4>';} else if($_SESSION['lang'] == 'ar') {
+                         echo '<h4 style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" class="text-center">قم باضافة منتجات الى السلة ليتم عرضها هنا</h4>';
+                    } ?>
                 <?php else: ?>
                 <form action="" method="post">
                     <?php $csrf->echoInputField(); ?>

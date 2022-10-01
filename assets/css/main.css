@@ -226,7 +226,7 @@ a:hover {
 }
 
 .menu-mobile:after {
-  content: "\f067";
+  content: "\f0c9";
   font-family: "FontAwesome";
   font-size: 2.5rem;
   padding: 0;
@@ -239,7 +239,7 @@ a:hover {
 }
 
 .menu-dropdown-icon:before {
-  content: "\f067";
+  content: "\f0c9";
   font-family: "FontAwesome";
   display: none;
   cursor: pointer;
@@ -2082,6 +2082,7 @@ div.pagination span.disabled {
   background-repeat: no-repeat;
   background-position: center;
   margin: -100px 0 0 -100px;
+ background:rgba(114, 0, 252, 0.207);
 }
 
 .ad-section img {

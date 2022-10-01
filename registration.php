@@ -47,25 +47,25 @@ if (isset($_POST['form1'])) {
         $error_message .= LANG_VALUE_125."<br>";
     }
 
-    if(empty($_POST['cust_country'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_126."<br>";
-    }
+    // if(empty($_POST['cust_country'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_126."<br>";
+    // }
 
     if(empty($_POST['cust_city'])) {
         $valid = 0;
         $error_message .= LANG_VALUE_127."<br>";
     }
 
-    if(empty($_POST['cust_state'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_128."<br>";
-    }
+    // if(empty($_POST['cust_state'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_128."<br>";
+    // }
 
-    if(empty($_POST['cust_zip'])) {
-        $valid = 0;
-        $error_message .= LANG_VALUE_129."<br>";
-    }
+    // if(empty($_POST['cust_zip'])) {
+    //     $valid = 0;
+    //     $error_message .= LANG_VALUE_129."<br>";
+    // }
 
     if( empty($_POST['cust_password']) || empty($_POST['cust_re_password']) ) {
         $valid = 0;
@@ -78,6 +78,8 @@ if (isset($_POST['form1'])) {
             $error_message .= LANG_VALUE_139."<br>";
         }
     }
+
+    
 
     if($valid == 1) {
 
@@ -120,14 +122,14 @@ if (isset($_POST['form1'])) {
                                     ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         $statement->execute(array(
                                         strip_tags($_POST['cust_name']),
-                                        strip_tags($_POST['cust_cname']),
+                                        strip_tags('Naruto'),
                                         strip_tags($_POST['cust_email']),
                                         strip_tags($_POST['cust_phone']),
-                                        strip_tags($_POST['cust_country']),
+                                        strip_tags('Iraq'),
                                         strip_tags($_POST['cust_address']),
                                         strip_tags($_POST['cust_city']),
-                                        strip_tags($_POST['cust_state']),
-                                        strip_tags($_POST['cust_zip']),
+                                        strip_tags('Basra'),
+                                        strip_tags('16009'),
                                         '',
                                         '',
                                         '',
@@ -171,13 +173,13 @@ if (isset($_POST['form1'])) {
         mail($to, $subject, $message, $headers);
 
         unset($_POST['cust_name']);
-        unset($_POST['cust_cname']);
+        // unset($_POST['cust_cname']);
         unset($_POST['cust_email']);
         unset($_POST['cust_phone']);
         unset($_POST['cust_address']);
         unset($_POST['cust_city']);
-        unset($_POST['cust_state']);
-        unset($_POST['cust_zip']);
+        // unset($_POST['cust_state']);
+        // unset($_POST['cust_zip']);
 
         $success_message = LANG_VALUE_152;
     }
@@ -186,7 +188,7 @@ if (isset($_POST['form1'])) {
 
 <div class="page-banner" style="background-color:#444;background-image: url(assets/uploads/<?php echo $banner_registration; ?>);">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_16; ?></h1>
+        <h1 style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"> <?php if($_SESSION['lang'] == 'en'){ echo'Customer Registration';} else if($_SESSION['lang'] == 'ar'){ echo'التسجيل';} ?></h1>
     </div>
 </div>
 
@@ -206,7 +208,7 @@ if (isset($_POST['form1'])) {
                                 
                                 <?php
                                 if($error_message != '') {
-                                    echo "<div class='error' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$error_message."</div>";
+                                        echo "<div class='error' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$error_message."</div>";
                                 }
                                 if($success_message != '') {
                                     echo "<div class='success' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$success_message."</div>";
@@ -214,65 +216,69 @@ if (isset($_POST['form1'])) {
                                 ?>
 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_102; ?> *</label>
-                                    <input type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
+                                    <label style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" for=""><?php if($_SESSION['lang'] == 'en') {
+                                        echo 'Full Name*';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'الاسم الكامل';
+                                    } ?> *</label>
+                                    <input  required type="text" class="form-control" name="cust_name" value="<?php if(isset($_POST['cust_name'])){echo $_POST['cust_name'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_103; ?></label>
-                                    <input type="text" class="form-control" name="cust_cname" value="<?php if(isset($_POST['cust_cname'])){echo $_POST['cust_cname'];} ?>">
+                                    <label style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" for=""><?php if($_SESSION['lang'] == 'en') {
+                                        echo 'Email Address*';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'البريد الالكتروني';
+                                    } ?> *</label>
+                                    <input required type="email" class="form-control" name="cust_email" value="<?php if(isset($_POST['cust_email'])){echo $_POST['cust_email'];} ?>">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
-                                    <input type="email" class="form-control" name="cust_email" value="<?php if(isset($_POST['cust_email'])){echo $_POST['cust_email'];} ?>">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_104; ?> *</label>
-                                    <input type="text" class="form-control" name="cust_phone" value="<?php if(isset($_POST['cust_phone'])){echo $_POST['cust_phone'];} ?>">
+                                    <label style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" for=""><?php if($_SESSION['lang'] == 'en') {
+                                        echo 'Phone Number*';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'رقم الهاتف';
+                                    } ?> *</label>
+                                    <input required type="text" class="form-control" name="cust_phone" value="<?php if(isset($_POST['cust_phone'])){echo $_POST['cust_phone'];} ?>">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <label for=""><?php echo LANG_VALUE_105; ?> *</label>
-                                    <textarea name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php if(isset($_POST['cust_address'])){echo $_POST['cust_address'];} ?></textarea>
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_106; ?> *</label>
-                                    <select name="cust_country" class="form-control select2">
-                                        <option value="">Select country</option>
-                                    <?php
-                                    $statement = $pdo->prepare("SELECT * FROM tbl_country ORDER BY country_name ASC");
-                                    $statement->execute();
-                                    $result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
-                                    foreach ($result as $row) {
-                                        ?>
-                                        <option value="<?php echo $row['country_id']; ?>"><?php echo $row['country_name']; ?></option>
-                                        <?php
-                                    }
-                                    ?>    
-                                    </select>                                    
-                                </div>
+                                    <label style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" for=""><?php if($_SESSION['lang'] == 'en') {
+                                        echo 'Address';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'العنوان';
+                                    }?> *</label>
+                                    <textarea style="margin-bottom: 10px;" required name="cust_address" class="form-control" cols="30" rows="10" style="height:70px;"><?php if(isset($_POST['cust_address'])){echo $_POST['cust_address'];} ?></textarea>
                                 
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_107; ?> *</label>
-                                    <input type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
+                                    <label style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" for=""><?php if($_SESSION['lang'] == 'en') {
+                                        echo 'City';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'المدينة';
+                                    } ?> *</label>
+                                    <input required type="text" class="form-control" name="cust_city" value="<?php if(isset($_POST['cust_city'])){echo $_POST['cust_city'];} ?>">
+                                </div>
+
+                                <div class="col-md-6 form-group">
+                                    <label style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" for=""><?php if($_SESSION['lang'] == 'en') {
+                                        echo 'Password';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'الرمز';
+                                    } ?> *</label>
+                                    <input required type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_108; ?> *</label>
-                                    <input type="text" class="form-control" name="cust_state" value="<?php if(isset($_POST['cust_state'])){echo $_POST['cust_state'];} ?>">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_109; ?> *</label>
-                                    <input type="text" class="form-control" name="cust_zip" value="<?php if(isset($_POST['cust_zip'])){echo $_POST['cust_zip'];} ?>">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
-                                    <input type="password" class="form-control" name="cust_password">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <label for=""><?php echo LANG_VALUE_98; ?> *</label>
-                                    <input type="password" class="form-control" name="cust_re_password">
+                                    <label style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" for=""><?php if($_SESSION['lang'] == 'en') {
+                                        echo 'Retype the Password*';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'اعادة كتابة الرمز';
+                                    }?> *</label>
+                                    <input required type="password" class="form-control" name="cust_re_password">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label for=""></label>
-                                    <input type="submit" class="btn btn-danger" value="<?php echo LANG_VALUE_15; ?>" name="form1">
+                                    <input style="font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight:700; background:rgb(98,0,255); border: none;" required type="submit" class="btn btn-danger" value="<?php if($_SESSION['lang'] == 'en') {
+                                        echo 'Register';
+                                    }else if($_SESSION['lang'] == 'ar') {
+                                        echo 'تسجيل';
+                                    } ?>" name="form1">
                                 </div>
                             </div>
                         </div>                        

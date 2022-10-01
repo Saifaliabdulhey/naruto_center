@@ -17,6 +17,8 @@ $success_message1 = '';
 
 
 
+
+
 // Getting all language variables into array as global variable
 $i = 1;
 $statement = $pdo->prepare("SELECT * FROM tbl_language");
@@ -90,7 +92,7 @@ foreach ($result as $row) {
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="assets/uploads/<?php echo $favicon; ?>">
+<link rel="icon" type="image/png" href="assets/uploads/logo.png ?>">
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -107,6 +109,7 @@ foreach ($result as $row) {
 <link rel="stylesheet" href="assets/css/select2.min.css">
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <?php
 
@@ -231,10 +234,202 @@ if ($cur_page == 'customer-order.php') {
 <?php endif; ?>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
+<div class="elfsight-app-1af5dc52-d481-4d16-9634-d7a785a43355"></div>
+
+<script type="text/javascript">
+	function getStates(value) {
+		$.post("mypage.php", {
+			partialState: value
+		}, function(data) {
+			$('#results').css({
+				'display': 'block'});
+			$("#results").html(data);
+		});
+	}
+</script>
 <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5993ef01e2587a001253a261&product=inline-share-buttons"></script>
 
 <?php echo $before_head; ?>
+
+
+<style>
+	.header-container {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.customer_info {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 50px;
+	}
+
+	.logo_pic {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-left: 250px;
+		margin-top: 30px;
+	}
+
+	.search_rep {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 42px;
+		width: 300px;
+		margin-left: -50px;
+	}
+
+
+
+	.logo_pic_hub {
+		width: 110px;
+		margin-right: 10px;
+		animation: spinner 6s linear infinite;
+	}
+
+	.icon {
+		margin: 10px;
+		list-style: none;
+	}
+
+
+
+	.search_input {
+		padding: 5px 10px;
+		width: 100% !important;
+		background: #fff;
+		box-shadow: 0px 0px 1px 1px #fff;
+		margin: 0px;
+		outline: none;
+		color: black;
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+		border: none;
+	}
+
+	.button_search {
+		padding: 0px 5px;
+		color: white;
+		background: none;
+		border: 1px solid white;
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+		border-left: none;
+	}
+
+	.search_icon {
+		width: 30px;
+		filter: invert(120%);
+		color: white;
+	}
+
+	.multi-lang {
+		margin-top: 42px;
+		margin-right: 10px;
+		color: white;
+	}
+
+	@keyframes spinner {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@media only screen and (max-width: 1550px) {
+		.logo_pic {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-left: 50px;
+			margin-top: 30px;
+		}
+
+		.search_rep {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 42px;
+			width: 300px;
+			margin-left: 0px;
+		}
+
+	}
+
+	@media only screen and (max-width: 920px) {
+		.logo_pic_hub {
+			width: 80px
+		}
+
+		.header-container {
+			display: flex;
+			width: 100%;
+			align-items: center;
+			justify-content: space-around;
+			flex-wrap: wrap;
+		}
+
+		.icon {
+			margin: 8px;
+			list-style: none;
+		}
+
+		.logo_pic {
+			width: 300px;
+			margin-left: 0px;
+		}
+
+		.logo_pic_hub {
+			width: 100px
+		}
+
+		.logo_title {
+			font-size: 27px;
+		}
+
+		.search_rep {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 15px;
+			margin-left: 30px;
+			width: 300px;
+		}
+
+		.multi-lang {
+			margin-top: 10px;
+			margin-right: 0px;
+			color: white;
+		}
+
+	}
+
+	#results {
+		display: none;
+		z-index: 10000;
+		position:absolute;
+		width: 400px;
+		backdrop-filter: blur(10px);
+		background-color:rgba(42, 0, 100, 0.516);
+	}
+</style>
+
+
+<script>
+
+</script>
 
 
 </head>
@@ -289,85 +484,106 @@ if ($cur_page == 'customer-order.php') {
 					</div>
 				</div>
 			</div>
+			<!-- <input type="text" onkeyup="getStates(this.value)">
+			<br> -->
+			
 		</div>
 	</div>
-
 
 	<div class="header" style="background: #C33764; /* fallback for old browsers */
          background: -webkit-linear-gradient(to right, #1D2671, #C33764);  /* Chrome 10-25, Safari 5.1-6 */
          background: linear-gradient(to right, #1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
        ">
-		<div class="container">
-			<div class="row inner">
-				<div style="display:flex; width:400px; justify-content:center; align-items:center;" class="col-md-4 logo">
-					<a href="index.php"><img style="margin:10px;" src="assets/uploads/logo.png" alt="logo image"></a>
-					<h1 style="color:white;">Naruto
+		<div class="">
+			<div class="header-container">
+				<div class="logo_pic">
+					<a href="index.php"><img class="logo_pic_hub" src="assets/uploads/logo.png" alt="logo image"></a>
+					<h1 class="logo_title" style="color:white;">Naruto
 						<span>Center</span>
 					</h1>
 				</div>
 
-				<div class="col-md-5 right">
-					<ul>
+				<div class="">
+					<ul class="customer_info">
 
 						<?php
 						if (isset($_SESSION['customer'])) {
 						?>
-							<li style='color: white;'><i style='color: white;' class="fa fa-user"></i style='color: white;'> <?php echo LANG_VALUE_13; ?> <?php echo $_SESSION['customer']['cust_name']; ?></li>
-							<li><a style='color: white;' href="dashboard.php"><i class="fa fa-home"></i> <?php echo LANG_VALUE_89; ?></a></li>
+							<li class="icon" style='color: white;'><i style='color: white; direction: rtl;' class="fa fa-user"></i style='color: white; direction: rtl;'> <?php echo $_SESSION['customer']['cust_name']; ?></li>
+							<li class="icon"><a style='color: white;' href="dashboard.php"><i class="fa fa-home"></i> <?php if ($_SESSION['lang'] == 'en') {
+																															echo 'Settings';
+																														} else if ($_SESSION['lang'] == 'ar') {
+																															echo 'الاعدادات';
+																														} ?></a></li>
 						<?php
 						} else {
 						?>
-							<li style='color: white;'><a style='color: white;' href="login.php"><i class="fa fa-sign-in"></i> <?php echo LANG_VALUE_9; ?></a></li>
-							<li><a style='color: white;' href="registration.php"><i class="fa fa-user-plus"></i> <?php echo LANG_VALUE_15; ?></a></li>
+							<li class="icon" style='color: white;'><a style='color: white;' href="login.php"><i class="fa fa-sign-in"></i> <?php if ($_SESSION['lang'] == 'en') {
+																																				echo 'Login';
+																																			} else if ($_SESSION['lang'] == 'ar') {
+																																				echo 'تسجيل الدخول';
+																																			} ?></a></li>
+							<li class="icon"><a style='color: white;' href="registration.php"><i class="fa fa-user-plus"></i> <?php if ($_SESSION['lang'] == 'en') {
+																																	echo 'Register';
+																																} else if ($_SESSION['lang'] == 'ar') {
+																																	echo 'التسجيل';
+																																} ?></a></li>
 						<?php
 						}
 						?>
 
-						<li><a style='color: white;' href="cart.php"><i class="fa fa-shopping-cart"></i> <?php echo LANG_VALUE_18; ?> (<?php echo LANG_VALUE_1; ?><?php
-																																									if (isset($_SESSION['cart_p_id'])) {
-																																										$table_total_price = 0;
-																																										$i = 0;
-																																										foreach ($_SESSION['cart_p_qty'] as $key => $value) {
-																																											$i++;
-																																											$arr_cart_p_qty[$i] = $value;
-																																										}
-																																										$i = 0;
-																																										foreach ($_SESSION['cart_p_current_price'] as $key => $value) {
-																																											$i++;
-																																											$arr_cart_p_current_price[$i] = $value;
-																																										}
-																																										for ($i = 1; $i <= count($arr_cart_p_qty); $i++) {
-																																											$row_total_price = $arr_cart_p_current_price[$i] * $arr_cart_p_qty[$i];
-																																											$table_total_price = $table_total_price + $row_total_price;
-																																										}
-																																										echo $table_total_price;
-																																									} else {
-																																										echo '0.00';
-																																									}
-																																									?>)</a></li>
+						<li class="icon"><a style='color: white;' href="cart.php"><i class="fa fa-shopping-cart"></i> <?php if ($_SESSION['lang'] == 'en') {
+																															echo 'Cart';
+																														} else if ($_SESSION['lang'] == 'ar') {
+																															echo 'السلة';
+																														} ?> (<?php echo LANG_VALUE_1; ?><?php
+																																							if (isset($_SESSION['cart_p_id'])) {
+																																								$table_total_price = 0;
+																																								$i = 0;
+																																								foreach ($_SESSION['cart_p_qty'] as $key => $value) {
+																																									$i++;
+																																									$arr_cart_p_qty[$i] = $value;
+																																								}
+																																								$i = 0;
+																																								foreach ($_SESSION['cart_p_current_price'] as $key => $value) {
+																																									$i++;
+																																									$arr_cart_p_current_price[$i] = $value;
+																																								}
+																																								for ($i = 1; $i <= count($arr_cart_p_qty); $i++) {
+																																									$row_total_price = $arr_cart_p_current_price[$i] * $arr_cart_p_qty[$i];
+																																									$table_total_price = $table_total_price + $row_total_price;
+																																								}
+																																								echo $table_total_price;
+																																							} else {
+																																								echo '0.00';
+																																							}
+																																							?>)</a></li>
 					</ul>
 				</div>
-				<div class="col-md-3 search-area">
+				<div class="" style="display: flex; width:400px;">
 					<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
 						<?php $csrf->echoInputField(); ?>
-						<div class="form-group">
-							<input type="text" style="width:300px;" class="form-control search-top" placeholder="<?php if($_SESSION['lang'] == 'en') {echo 'Search Product';} else if($_SESSION['lang'] == 'ar') {echo 'ابحث عن منتج';} ?>" name="search_text">
+						<div class=" search_rep">
+							<input type="text" style="width:300px; display:flex;" class="search_input" onkeyup="getStates(this.value)" placeholder="<?php if ($_SESSION['lang'] == 'en') {
+																														echo 'Search Product';
+																													} else if ($_SESSION['lang'] == 'ar') {
+																														echo 'ابحث عن منتج';
+																													} ?>" name="search_text">
+							<button type="submit" class="button_search"><img class="search_icon" src="./assets/img/search.png"></button>
 						</div>
-						<button type="submit" style="background:rgb(98, 0, 255); border: none" class="btn btn-danger"><?php if ($_SESSION['lang'] == 'en') {
-																															echo 'Search';
-																														} else if ($_SESSION['lang'] == 'ar') {
-																															echo  'بحث';
-																														} ?></button>
+						<div id="results"></div>
 					</form>
 
 				</div>
-				<form method='post' style="display: flex; justify-content:center; align-items: center; margin-top: 32px; right: 40px; position: absolute;">
-					<input style="margin-right: 5px; padding: 5px 10px; color:white; background:#1D2671; border:none; " type="submit" id="btnSubmit" name="btnSubmit" value="Arabic" />
-					<input style="margin-right: 5px; padding: 5px 10px; color:white; background:#1D2671; border:none;" type="submit" id="btnDelete" name="btnDelete" value="English" />
-					<?php echo $_SESSION['lang']?>
-
-				</form>
+				<div class="multi-lang">
+					<form method='post' style="display: flex;">
+						<input style="margin-right: 5px; padding: 2px 10px; color:white; border-radius:5px; background:transparent; border:1px solid; font-weight: 500;" type="submit" id="btnSubmit" name="btnSubmit" value="عربي" />
+						<input style="margin-right: 5px; padding: 2px 6px; color:white; border-radius:5px; background:transparent; border:1px solid;" type="submit" id="btnDelete" name="btnDelete" value="English" />
+						<?php echo $_SESSION['lang'] ?>
+					</form>
+				</div>
 			</div>
+
 		</div>
 	</div>
 
@@ -382,11 +598,11 @@ if ($cur_page == 'customer-order.php') {
 						<div class="menu">
 							<ul>
 
-								<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700; id="home" href="index.php"><?php if ($_SESSION['lang'] == 'ar') {
-																		echo 'الصفحة الرئيسية';
-																	} else if ($_SESSION['lang'] == 'en') {
-																		echo 'Home';
-																	} ?></a></li>
+								<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" id=" home" href="index.php"><?php if ($_SESSION['lang'] == 'ar') {
+																																								echo 'الصفحة الرئيسية';
+																																							} else if ($_SESSION['lang'] == 'en') {
+																																								echo 'Home';
+																																							} ?></a></li>
 
 
 								<?php
@@ -414,15 +630,21 @@ if ($cur_page == 'customer-order.php') {
 
 								foreach ($result as $row) {
 								?>
-									<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"  href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category"><?php echo $row['tcat_name']; ?></a>
+									<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" href="product-category.php?id=<?php echo $row['tcat_id']; ?>&type=top-category"><?php echo $row['tcat_name']; ?></a>
 										<ul>
 											<?php
-											$statement1 = $pdo->prepare("SELECT * FROM tbl_mid_category WHERE tcat_id=?");
-											$statement1->execute(array($row['tcat_id']));
-											$result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
+											if ($_SESSION['lang'] == "en") {
+												$statement1 = $pdo->prepare("SELECT * FROM tbl_mid_category WHERE tcat_id=?");
+												$statement1->execute(array($row['tcat_id']));
+												$result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
+											} else if ($_SESSION['lang'] == "ar") {
+												$statement1 = $pdo->prepare("SELECT * FROM tbl_mid_arabic_category WHERE tcat_id=?");
+												$statement1->execute(array($row['tcat_id']));
+												$result1 = $statement1->fetchAll(PDO::FETCH_ASSOC);
+											}
 											foreach ($result1 as $row1) {
 											?>
-												<li><a href="product-category.php?id=<?php echo $row1['mcat_id']; ?>&type=mid-category"><?php echo $row1['mcat_name']; ?></a>
+												<li style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;"><a href="product-category.php?id=<?php echo $row1['mcat_id']; ?>&type=mid-category"><?php echo $row1['mcat_name']; ?></a>
 													<ul>
 														<?php
 														$statement2 = $pdo->prepare("SELECT * FROM tbl_end_category WHERE mcat_id=?");
@@ -460,10 +682,22 @@ if ($cur_page == 'customer-order.php') {
 								}
 								?>
 
-								<li><a href="about.php"><?php echo $about_title; ?></a></li>
-								<li><a href="faq.php"><?php echo $faq_title; ?></a></li>
+								<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" href="about.php"><?php if ($_SESSION['lang'] == 'en') {
+																																					echo 'About Us';
+																																				} else if ($_SESSION['lang'] == 'ar') {
+																																					echo 'حول ناروتو ';
+																																				} ?></a></li>
+								<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" href="faq.php"><?php if ($_SESSION['lang'] == 'en') {
+																																				echo 'FAQ';
+																																			} else if ($_SESSION['lang'] == 'ar') {
+																																				echo 'التعليمات';
+																																			} ?></a></li>
 
-								<li><a href="contact.php"><?php echo $contact_title; ?></a></li>
+								<li><a style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:700;" href="contact.php"><?php if ($_SESSION['lang'] == 'en') {
+																																					echo 'Contact Us';
+																																				} else if ($_SESSION['lang'] == 'ar') {
+																																					echo 'تواصل معنا';
+																																				} ?></a></li>
 							</ul>
 						</div>
 					</div>
@@ -471,4 +705,5 @@ if ($cur_page == 'customer-order.php') {
 			</div>
 		</div>
 	</div>
+
 </body>

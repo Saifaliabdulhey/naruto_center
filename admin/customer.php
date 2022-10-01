@@ -28,8 +28,6 @@
 							$i=0;
 							$statement = $pdo->prepare("SELECT * 
 														FROM tbl_customer t1
-														JOIN tbl_country t2
-														ON t1.cust_country = t2.country_id
 													");
 							$statement->execute();
 							$result = $statement->fetchAll(PDO::FETCH_ASSOC);						
@@ -40,10 +38,8 @@
 									<td><?php echo $i; ?></td>
 									<td><?php echo $row['cust_name']; ?></td>
 									<td><?php echo $row['cust_email']; ?></td>
-									<td>
-										<?php echo $row['country_name']; ?><br>
+									<td> -->
 										<?php echo $row['cust_city']; ?><br>
-										<?php echo $row['cust_state']; ?>
 									</td>
 									<td><?php if($row['cust_status']==1) {echo 'Active';} else {echo 'Inactive';} ?></td>
 									<td>
