@@ -284,7 +284,7 @@ if ($cur_page == 'customer-order.php') {
 		justify-content: center;
 		align-items: center;
 		margin-top: 42px;
-		width: 300px;
+		width: 500px;
 		margin-left: -50px;
 	}
 
@@ -314,6 +314,8 @@ if ($cur_page == 'customer-order.php') {
 		border-top-left-radius: 30px;
 		border-bottom-left-radius: 30px;
 		border: none;
+		margin-left: 80px;
+		
 	}
 
 	.button_search {
@@ -348,6 +350,38 @@ if ($cur_page == 'customer-order.php') {
 		}
 	}
 
+	@media only screen and (max-width: 1230px) {
+
+		.search_rep {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 42px;
+			width: 100% !important;
+			margin-left: 10px;
+			margin-right: 20px;
+		}
+
+		.search_input {
+		padding: 5px 10px;
+		width: 100% !important;
+		background: #fff;
+		box-shadow: 0px 0px 1px 1px #fff;
+		margin: 0px;
+		outline: none;
+		color: black;
+		border-top-left-radius: 30px;
+		border-bottom-left-radius: 30px;
+		border: none;
+		margin-left: 10px;
+		
+	}
+
+	.logo_title {
+		display: none;
+	}
+
+	}
 	@media only screen and (max-width: 1550px) {
 		.logo_pic {
 			display: flex;
@@ -362,7 +396,7 @@ if ($cur_page == 'customer-order.php') {
 			justify-content: center;
 			align-items: center;
 			margin-top: 42px;
-			width: 300px;
+			width: 100% !important;
 			margin-left: 0px;
 		}
 
@@ -383,6 +417,7 @@ if ($cur_page == 'customer-order.php') {
 
 		.icon {
 			margin: 8px;
+			margin-top:-20px;
 			list-style: none;
 		}
 
@@ -403,9 +438,10 @@ if ($cur_page == 'customer-order.php') {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin-top: 15px;
-			margin-left: 30px;
-			width: 300px;
+			margin-top: 30px !important;
+			margin-left: 0px;
+			width: 400px;
+			margin: 10px;
 		}
 
 		.multi-lang {
@@ -414,15 +450,33 @@ if ($cur_page == 'customer-order.php') {
 			color: white;
 		}
 
+		.button_search {
+		padding: 0px 5px;
+		color: white;
+		background: none;
+		border: 1px solid white;
+		border-top-right-radius: 30px;
+		border-bottom-right-radius: 30px;
+		border-left: none;
+		margin-right: 30px;
+	}
+
+
 	}
 
 	#results {
 		display: none;
 		z-index: 10000;
 		position:absolute;
-		width: 400px;
-		backdrop-filter: blur(10px);
+		width: 420px;
+		backdrop-filter: blur(20px);
 		background-color:rgba(42, 0, 100, 0.516);
+		border-radius: 10px;
+		top:80px;
+		left:30px;
+		height:auto;
+		max-height:900px;
+		overflow-y: scroll;
 	}
 </style>
 
@@ -503,6 +557,21 @@ if ($cur_page == 'customer-order.php') {
 					</h1>
 				</div>
 
+			
+				<div class="" style="display: flex; width:500px; position:relative; flex-direction:column;">
+					<form style="width:100%;" style="width:100%" role="search" action="search-result.php" method="get">
+						<?php $csrf->echoInputField(); ?>
+						<div class=" search_rep">
+							<input type="text" style="width:300px; display:flex;" autocomplete="off" class="search_input" onkeyup="getStates(this.value)" placeholder="<?php if ($_SESSION['lang'] == 'en') {
+																														echo 'Search Product';
+																													} else if ($_SESSION['lang'] == 'ar') {
+																														echo 'ابحث عن منتج';
+																													} ?>" name="search_text">
+							<button type="submit" class="button_search"><img class="search_icon" src="./assets/img/search.png"></button>
+						</div>
+					</form>
+					<div id="results"></div>
+				</div>
 				<div class="">
 					<ul class="customer_info">
 
@@ -559,21 +628,6 @@ if ($cur_page == 'customer-order.php') {
 																																							}
 																																							?>)</a></li>
 					</ul>
-				</div>
-				<div class="" style="display: flex; width:400px;">
-					<form class="navbar-form navbar-left" role="search" action="search-result.php" method="get">
-						<?php $csrf->echoInputField(); ?>
-						<div class=" search_rep">
-							<input type="text" style="width:300px; display:flex;" class="search_input" onkeyup="getStates(this.value)" placeholder="<?php if ($_SESSION['lang'] == 'en') {
-																														echo 'Search Product';
-																													} else if ($_SESSION['lang'] == 'ar') {
-																														echo 'ابحث عن منتج';
-																													} ?>" name="search_text">
-							<button type="submit" class="button_search"><img class="search_icon" src="./assets/img/search.png"></button>
-						</div>
-						<div id="results"></div>
-					</form>
-
 				</div>
 				<div class="multi-lang">
 					<form method='post' style="display: flex;">

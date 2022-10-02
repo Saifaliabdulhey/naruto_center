@@ -55,6 +55,7 @@ if(isset($_POST['form1'])) {
 </div>
 
 <div class="page">
+   <h1 style="font-size:large; text-align:center; margin:50px;"><span style="color:royalblue;"> Note:</span> if you don't have Naruto Account you should create one! Just click on Register button up above on the Header! then come back and Login!</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
