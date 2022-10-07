@@ -150,7 +150,7 @@ if (isset($_POST['form1'])) {
                                         $token,
                                         $cust_datetime,
                                         $cust_timestamp,
-                                        0
+                                        1
                                     ));
 
         // Send email for confirmation of the account
@@ -160,7 +160,6 @@ if (isset($_POST['form1'])) {
         $verify_link = BASE_URL.'verify.php?email='.$to.'&token='.$token;
         $message = '
 '.LANG_VALUE_151.'<br><br>
-
 <a href="'.$verify_link.'">'.$verify_link.'</a>';
 
         $headers = "From: noreply@" . BASE_URL . "\r\n" .
@@ -170,7 +169,7 @@ if (isset($_POST['form1'])) {
                    "Content-Type: text/html; charset=ISO-8859-1\r\n";
         
         // Sending Email
-        mail($to, $subject, $message, $headers);
+        // mail($to, $subject, $message, $headers);
 
         unset($_POST['cust_name']);
         // unset($_POST['cust_cname']);
@@ -211,7 +210,10 @@ if (isset($_POST['form1'])) {
                                         echo "<div class='error' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$error_message."</div>";
                                 }
                                 if($success_message != '') {
-                                    echo "<div class='success' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>".$success_message."</div>";
+                                    echo "<div class='success' style='padding: 10px;background:#f1f1f1;margin-bottom:20px;'>";if($_SESSION['lang'] == 'en') {
+                                 echo $success_message;} else if($_SESSION['lang'] == 'ar') {
+                                    echo 'تم التسجيل بنجاح الان اضغط على تسجيل الدخول بالاعلى وقم بتسجيل الدخول لاكمال عملية الشراء';
+                                 };"</div>";
                                 }
                                 ?>
 

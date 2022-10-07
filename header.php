@@ -257,6 +257,12 @@ if ($cur_page == 'customer-order.php') {
 
 
 <style>
+
+	.search_result_box {
+		display:flex;
+		justify-content:center;
+		align-items:center;
+	}
 	.header-container {
 		display: flex;
 		width: 100%;
@@ -275,7 +281,7 @@ if ($cur_page == 'customer-order.php') {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-left: 250px;
+		margin-left: 100px;
 		margin-top: 30px;
 	}
 
@@ -285,7 +291,7 @@ if ($cur_page == 'customer-order.php') {
 		align-items: center;
 		margin-top: 42px;
 		width: 500px;
-		margin-left: -50px;
+		margin-left: 0px;
 	}
 
 
@@ -314,7 +320,7 @@ if ($cur_page == 'customer-order.php') {
 		border-top-left-radius: 30px;
 		border-bottom-left-radius: 30px;
 		border: none;
-		margin-left: 80px;
+		margin-left: 0px;
 		
 	}
 
@@ -377,9 +383,7 @@ if ($cur_page == 'customer-order.php') {
 		
 	}
 
-	.logo_title {
-		display: none;
-	}
+
 
 	}
 	@media only screen and (max-width: 1550px) {
@@ -387,7 +391,7 @@ if ($cur_page == 'customer-order.php') {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin-left: 50px;
+			margin-right: 40px !important;
 			margin-top: 30px;
 		}
 
@@ -398,6 +402,10 @@ if ($cur_page == 'customer-order.php') {
 			margin-top: 42px;
 			width: 100% !important;
 			margin-left: 0px;
+		}
+
+		.logo_title {
+			font-size: 27px;
 		}
 
 	}
@@ -468,12 +476,12 @@ if ($cur_page == 'customer-order.php') {
 		display: none;
 		z-index: 10000;
 		position:absolute;
-		width: 420px;
+		width: 100%;
 		backdrop-filter: blur(20px);
 		background-color:rgba(42, 0, 100, 0.516);
 		border-radius: 10px;
 		top:80px;
-		left:30px;
+		left:0px;
 		height:auto;
 		max-height:900px;
 		overflow-y: scroll;
@@ -558,7 +566,7 @@ if ($cur_page == 'customer-order.php') {
 				</div>
 
 			
-				<div class="" style="display: flex; width:500px; position:relative; flex-direction:column;">
+				<div class="search_result_box" style="display: flex; width:500px; position:relative; flex-direction:column;">
 					<form style="width:100%;" style="width:100%" role="search" action="search-result.php" method="get">
 						<?php $csrf->echoInputField(); ?>
 						<div class=" search_rep">

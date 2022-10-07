@@ -50,12 +50,11 @@ if(isset($_POST['form1'])) {
 
 <div class="page-banner" style="background-color:#444;background-image: url(assets/uploads/<?php echo $banner_login; ?>);">
     <div class="inner">
-        <h1><?php echo LANG_VALUE_10; ?></h1>
+        <h1><?php if($_SESSION['lang'] == 'en'){echo 'Login';} else if($_SESSION['lang'] == 'ar') {echo 'تسجيل الدخول';}?></h1>
     </div>
 </div>
 
 <div class="page">
-   <h1 style="font-size:large; text-align:center; margin:50px;"><span style="color:royalblue;"> Note:</span> if you don't have Naruto Account you should create one! Just click on Register button up above on the Header! then come back and Login!</h1>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -76,18 +75,19 @@ if(isset($_POST['form1'])) {
                                 }
                                 ?>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_94; ?> *</label>
+                                    <label for=""><?php if($_SESSION['lang'] == 'en'){echo 'Email';} else if($_SESSION['lang'] == 'ar') {echo 'الايميل';}?></label>
                                     <input type="email" class="form-control" name="cust_email">
                                 </div>
                                 <div class="form-group">
-                                    <label for=""><?php echo LANG_VALUE_96; ?> *</label>
+                                    <label for=""><?php if($_SESSION['lang'] == 'en'){echo 'Password';} else if($_SESSION['lang'] == 'ar') {echo 'الرمز';}?></label>
                                     <input type="password" class="form-control" name="cust_password">
                                 </div>
                                 <div class="form-group">
                                     <label for=""></label>
-                                    <input type="submit" class="btn btn-success" value="<?php echo LANG_VALUE_4; ?>" name="form1">
+                                    <input type="submit" class="btn btn-success" value="<?php if($_SESSION['lang'] == 'en'){echo 'Login';} else if($_SESSION['lang'] == 'ar') {echo 'تسجيل الدخول';}?>" name="form1">
+                                    <a style="margin-left:5px;" type="button" href="registration.php"><?php if($_SESSION['lang'] == 'en'){echo 'Register';} else if($_SESSION['lang'] == 'ar') {echo 'التسجيل';}?></a>
                                 </div>
-                                <a href="forget-password.php" style="color:#e4144d;"><?php echo LANG_VALUE_97; ?>?</a>
+                                <a href="forget-password.php" style="color:#e4144d;"><?php if($_SESSION['lang'] == 'en'){echo 'Forget Password?';} else if($_SESSION['lang'] == 'ar') {echo 'هل نسيت الرمز؟';}?></a>
                             </div>
                         </div>                        
                     </form>

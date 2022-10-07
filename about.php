@@ -1,9 +1,15 @@
 <?php require_once('header.php'); ?>
 
 <?php
-$statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
+if($_SESSION['lang'] == 'en') {
+    $statement = $pdo->prepare("SELECT * FROM tbl_page WHERE id=1");
 $statement->execute();
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);                            
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);   
+}else if($_SESSION['lang'] == 'ar') {
+    $statement = $pdo->prepare("SELECT * FROM tbl_arabic_page WHERE id=1");
+$statement->execute();
+$result = $statement->fetchAll(PDO::FETCH_ASSOC);   
+}                       
 foreach ($result as $row) {
    $about_title = $row['about_title'];
     $about_content = $row['about_content'];
@@ -13,15 +19,14 @@ foreach ($result as $row) {
 
 <div class="page-banner" style="background-image: url(assets/uploads/<?php echo $about_banner; ?>);">
     <div class="inner">
-        <h1><?php echo $about_title; ?></h1>
+        <h1><?php if($_SESSION['lang'] == 'en'){echo 'About Us';} else if($_SESSION['lang'] == 'ar') {echo 'حول  ناروتو';}?></h1>
     </div>
 </div>
 
 <div class="page">
-    <div class="container">
+    <div class="container" style="text-align:center;">
         <div class="row">            
-            <div class="col-md-12">
-                
+            <div style="text-align:center; width:70%; margin:auto;">               
                 <p>
                     <?php echo $about_content; ?>
                 </p>
